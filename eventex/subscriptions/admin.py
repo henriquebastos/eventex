@@ -21,5 +21,7 @@ class SubscriptionModelAdmin(admin.ModelAdmin):
 	def mark_as_paid(self, request, queryset):
 		queryset.update(paid=True)
 
+	mark_as_paid.short_description = 'marcar como pago'
+
 
 admin.site.register(Subscription, SubscriptionModelAdmin)
