@@ -3,7 +3,7 @@ from django.test import TestCase
 from eventex.subscriptions.forms import SubscriptionForm
 
 
-class SubscribeTest(TestCase):
+class SubscribeGet(TestCase):
 	def setUp(self):
 		self.resp = self.client.get('/inscricao/')
 
@@ -42,7 +42,7 @@ class SubscribeTest(TestCase):
 		self.assertSequenceEqual(['name', 'cpf', 'email', 'phone'], list(form.fields))
 
 
-class SubscribePostTest(TestCase):
+class SubscribePostValid(TestCase):
 	def setUp(self):
 		data = dict(name='Henrique Bastos', cpf='12345678901',
 				    email='henrique@bastos.net', phone='21-99618-6180')
@@ -82,7 +82,7 @@ class SubscribePostTest(TestCase):
 		self.assertIn('21-99618-6180', email.body)
 
 
-class SubscribeInvalidPost(TestCase):
+class SubscribePostInvalid(TestCase):
 	def setUp(self):
 		self.resp = self.client.post('/inscricao/', {})
 
