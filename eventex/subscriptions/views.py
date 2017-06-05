@@ -9,7 +9,7 @@ def subscribe(request):
 		mail.send_mail('Confirmação de inscrição',
 					   'Message',
 					   'contato@eventex.com.br',
-					   ['visitor@email.com'])
+					   ['contato@eventex.com.br', 'henrique@bastos.net'])
 
 		return HttpResponseRedirect('/inscricao/')
 	else:
