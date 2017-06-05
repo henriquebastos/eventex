@@ -1,5 +1,6 @@
 <h1>Formulário de Inscrição</h1>
 <form action="." novalidade method="post">
+	{% csrf_token %}
 	<p>
 		<label for="id_name">Nome:</label>
 		<input id="id_name" type="text" name="name" maxlength="100"/>
