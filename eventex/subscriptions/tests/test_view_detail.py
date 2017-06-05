@@ -1,4 +1,5 @@
 from django.test import TestCase
+from eventex.subscriptions.models import Subscription
 
 
 class SubscriptionDetailGet(TestCase):
@@ -11,3 +12,8 @@ class SubscriptionDetailGet(TestCase):
 	def test_template(self):
 		self.assertTemplateUsed(self.resp,
 								'subscriptions/subscription_detail.html')
+
+	def test_context(self):
+		subscription = self.resp.context['subscription']
+		self.assertIsInstance(subscription, Subscription)
+
