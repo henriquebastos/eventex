@@ -2,4 +2,8 @@ from django.contrib import admin
 from eventex.subscriptions.models import Subscription
 
 
-admin.site.register(Subscription)
+class SubscriptionModelAdmin(admin.ModelAdmin):
+	list_display = ('name', 'email', 'phone', 'cpf', 'created_at')
+
+
+admin.site.register(Subscription, SubscriptionModelAdmin)
