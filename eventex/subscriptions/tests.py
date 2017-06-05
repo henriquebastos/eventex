@@ -92,3 +92,7 @@ class SubscribeInvalidPost(TestCase):
 	def test_has_form(self):
 		form = self.resp.context['form']
 		self.assertIsInstance(form, SubscriptionForm)
+
+	def test_form_has_errors(self):
+		form = self.resp.context['form']
+		self.assertTrue(form.errors)
