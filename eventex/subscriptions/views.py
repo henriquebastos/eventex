@@ -34,5 +34,5 @@ def create(request):
 
 
 def new(request):
-	context = {'form': SubscriptionForm()}
-	return render(request, 'subscriptions/subscription_form.html', context)
+	return render(request, 'subscriptions/subscription_form.html',
+		          {'form': SubscriptionForm()})
