@@ -88,3 +88,7 @@ class SubscribeInvalidPost(TestCase):
 
 	def test_template(self):
 		self.assertTemplateUsed(self.resp, 'subscriptions/subscription_form.html')
+
+	def test_has_form(self):
+		form = self.resp.context['form']
+		self.assertIsInstance(form, SubscriptionForm)
