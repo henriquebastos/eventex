@@ -17,11 +17,15 @@ class SubscribeTest(TestCase):
 
 	def test_html(self):
 		"""Html must contain input tags"""
-		self.assertContains(self.resp, '<form')
-		self.assertContains(self.resp, '<input', 6)
-		self.assertContains(self.resp, 'type="text"', 3)
-		self.assertContains(self.resp, 'type="email"')
-		self.assertContains(self.resp, 'type="submit"')
+		tags = (('<form', 1),
+			    ('<input', 6),
+			    ('type="text"', 3),
+			    ('type="email"', 1),
+			    ('type="submit"', 1))
+
+		for text, count in tags:
+			with self.subTest():
+				self.assertContains(self.resp, text, count)
 
 	def test_csrf(self):
 		"""Html must contain csrf"""
