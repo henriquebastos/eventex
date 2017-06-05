@@ -1,0 +1,2 @@
+class SubscriptionForm:
+	pass

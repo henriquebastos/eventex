@@ -1,4 +1,5 @@
 from django.test import TestCase
+from eventex.subscriptions.forms import SubscriptionForm
 
 
 class SubscribeTest(TestCase):
@@ -24,3 +25,8 @@ class SubscribeTest(TestCase):
 	def test_csrf(self):
 		"""Html must contain csrf"""
 		self.assertContains(self.resp, 'csrfmiddlewaretoken')
+
+	def test_has_form(self):
+		"""Context must have subscription form"""
+		form = self.resp.context['form']
+		self.assertIsInstance(form, SubscriptionForm)
