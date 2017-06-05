@@ -85,3 +85,6 @@ class SubscribeInvalidPost(TestCase):
 	def test_post(self):
 		"""Invalid POST should not redirect"""
 		self.assertEqual(200, self.resp.status_code)
+
+	def test_template(self):
+		self.assertTemplateUsed(self.resp, 'subscriptions/subscription_form.html')
