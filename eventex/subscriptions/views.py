@@ -28,11 +28,11 @@ def create(request):
 			   'subscriptions/subscription_email.txt',
 			   form.cleaned_data)
 
-	Subscription.objects.create(**form.cleaned_data)
+	subscription = Subscription.objects.create(**form.cleaned_data)
 
 	messages.success(request, 'Inscrição realizada com sucesso!')
 
-	return HttpResponseRedirect('/inscricao/1/')
+	return HttpResponseRedirect('/inscricao/{}/'.format(subscription.pk))
 
 
 def new(request):
