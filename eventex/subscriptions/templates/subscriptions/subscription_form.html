@@ -20,6 +20,22 @@
 
         <link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
 
+        <style>
+            .alert {
+                padding: 0 15px;
+                margin-bottom: : 1rem;
+                border: 1px solid transparent;
+                border-radius: .25rem;
+            }
+            .alert p {
+                padding: 7px 0 7px;
+            }
+            .alert.success {
+                color: #3c763d;
+                background-color: #dff0d8;
+                border-color: #d0e9c6;
+            }
+        </style>
 	</head>
 
 	<body>
@@ -52,7 +68,7 @@
                 <div class="desktop-6">
                     {% if messages %}
                         {% for message in messages %}
-                            <div>
+                            <div class="alert success">
                                 <p>{{ message }}</p>
                             </div>
                         {% endfor %}
