@@ -39,7 +39,8 @@ def new(request):
 
 
 def detail(request):
-	return render(request, 'subscriptions/subscription_detail.html')
+	return render(request, 'subscriptions/subscription_detail.html',
+		          {'subscription': Subscription()})
 
 
 def _send_mail(subject, from_, to, template_name, context):
