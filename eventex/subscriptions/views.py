@@ -1,5 +1,5 @@
 from django.core import mail
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from eventex.subscriptions.forms import SubscriptionForm
@@ -20,7 +20,7 @@ def subscribe(request):
 
 			return HttpResponseRedirect('/inscricao/')
 		else:
-			return HttpResponse()
+			return render(request, 'subscriptions/subscription_form.html')
 	else:
 		context = {'form': SubscriptionForm()}
 		return render(request, 'subscriptions/subscription_form.html', context)
