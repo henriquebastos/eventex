@@ -76,3 +76,10 @@ class SubscribePostTest(TestCase):
 		self.assertIn('12345678901', email.body)
 		self.assertIn('henrique@bastos.net', email.body)
 		self.assertIn('21-99618-6180', email.body)
+
+
+class SubscribeInvalidPost(TestCase):
+	def test_post(self):
+		"""Invalid POST should not redirect"""
+		response = self.client.post('/inscricao/', {})
+		self.assertEqual(200, response.status_code)
