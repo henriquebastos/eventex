@@ -2,20 +2,24 @@
 <form action="." novalidade method="post">
 	{% csrf_token %}
 	<p>
-		<label for="id_name">Nome:</label>
-		<input id="id_name" type="text" name="name" maxlength="100"/>
+		<label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+		{{ form.name.erros }}
+		{{ form.name }}
 	</p>
 	<p>
-		<label for="id_cpf">CPF:</label>
-		<input id="id_cpf" type="text" name="cpf" maxlength="11"/>
+		<label for="{{ form.cpf.id_for_label }}">{{ form.cpf.label }}</label>
+		{{ form.cpf.erros }}
+		{{ form.cpf }}
 	</p>
 	<p>
-		<label for="id_email">Email:</label>
-		<input id="id_email" type="email" name="email" maxlength="75"/>
+		<label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+		{{ form.email.erros }}
+		{{ form.email }}
 	</p>
 	<p>
-		<label for="id_phone">Telefone:</label>
-		<input id="id_phone" type="text" name="phone" maxlength="20"/>
+		<label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+		{{ form.phone.erros }}
+		{{ form.phone }}
 	</p>
 	<input type="submit" value="Enviar!"/>
 </form>
