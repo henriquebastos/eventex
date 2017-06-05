@@ -1,4 +1,3 @@
-import unittest
 from django.core import mail
 from django.test import TestCase
 from eventex.subscriptions.forms import SubscriptionForm
@@ -77,13 +76,3 @@ class SubscribePostInvalid(TestCase):
 
 	def test_dont_save_subscription(self):
 		self.assertFalse(Subscription.objects.exists())
-
-
-@unittest.skip('To be removed.')
-class SubscribeSuccessMessage(TestCase):
-	def test_message(self):
-		data = dict(name='Henrique Bastos', cpf='12345678901',
-			        email='henrique@bastos.net', phone='21-99618-6180')
-
-		response = self.client.post('/inscricao/', data, follow=True)
-		self.assertContains(response, 'Inscrição realizada com sucesso!')
