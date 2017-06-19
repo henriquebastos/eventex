@@ -1,5 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from eventex.subscriptions.models import Subscription
 
 
 def validate_cpf(value):
@@ -10,7 +11,7 @@ def validate_cpf(value):
 		raise ValidationError('CPF deve ter 11 números.', 'length')
 
 
-class SubscriptionForm(forms.Form):
+class SubscriptionFormOld(forms.Form):
 	name = forms.CharField(label='Nome')
 	cpf = forms.CharField(label='CPF', validators=[validate_cpf])
 	email = forms.EmailField(label='Email', required=False)
@@ -26,3 +27,7 @@ class SubscriptionForm(forms.Form):
 			raise ValidationError('Informe seu e-mail ou telefone.')
 
 		return self.cleaned_data
+
+
+class SubscriptionForm(forms.ModelForm):
+	pass
