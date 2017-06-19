@@ -22,7 +22,7 @@ class SubscriptionForm(forms.Form):
 		return ' '.join(words)
 
 	def clean(self):
-		if not self.cleaned_data['email'] and not self.cleaned_data['phone']:
+		if not self.cleaned_data.get('email') and not self.cleaned_data.get('phone'):
 			raise ValidationError('Informe seu e-mail ou telefone.')
 
 		return self.cleaned_data
