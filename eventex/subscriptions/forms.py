@@ -30,4 +30,5 @@ class SubscriptionFormOld(forms.Form):
 
 
 class SubscriptionForm(forms.ModelForm):
-	pass
+	class Meta:
+		model = Subscription
