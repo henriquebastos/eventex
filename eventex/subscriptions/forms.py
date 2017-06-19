@@ -18,8 +18,5 @@ class SubscriptionForm(forms.Form):
 
 	def clean_name(self):
 		name = self.cleaned_data['name']
-		words = []
-		for w in name.split():
-			words.append(w.capitalize())
-		capitalized_name = ' '.join(words)
-		return capitalized_name
+		words = [w.capitalize() for w in name.split()]
+		return ' '.join(words)
