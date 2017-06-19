@@ -59,14 +59,12 @@
         <section id="speakers">
             <div class="speakers text-align-center row desktop-8 padding-bottom-2 container">
                 <h2>Palestrantes Convidados</h2>
+                {% for speaker in speakers %}
                 <div class="desktop-4">
-                    <img src="http://hbn.link/hopper-pic"/>
-                    <h4>Grace Hopper</h4>
+                    <img src="{{ speaker.photo }}"/>
+                    <h4>{{ speaker.name }}</h4>
                 </div>
-                <div class="desktop-4">
-                    <img src="http://hbn.link/turing-pic"/>
-                    <h4>Alan Turing</h4>
-                </div>
+                {% endfor %}
         </section>
 
         <!-- SPONSORS -->
