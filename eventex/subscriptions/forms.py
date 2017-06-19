@@ -23,8 +23,6 @@ class SubscriptionFormOld(forms.Form):
 
 
 class SubscriptionForm(forms.ModelForm):
-    cpf = forms.CharField(label='CPF', validators=[validate_cpf])
-
     class Meta:
         model = Subscription
         fields = ['name', 'cpf', 'email', 'phone']
