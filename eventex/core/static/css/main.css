@@ -364,3 +364,12 @@ section header h2 {
     background-color: #dff0d8;
     border-color: #d0e9c6;
 }
+
+.speakers h2 {
+    text-transform: uppercase;
+}
+
+.speakers img {
+    width: 200px;
+    border-radius: 100%;
+}
