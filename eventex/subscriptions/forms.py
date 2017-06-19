@@ -32,3 +32,4 @@ class SubscriptionFormOld(forms.Form):
 class SubscriptionForm(forms.ModelForm):
 	class Meta:
 		model = Subscription
+		fields = ['name', 'cpf', 'email', 'phone']
