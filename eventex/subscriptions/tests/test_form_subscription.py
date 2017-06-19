@@ -19,3 +19,13 @@ class SubscriptionFormTest(TestCase):
 		form.is_valid()
 
 		self.assertListEqual(['cpf'], list(form.errors))
+
+	def test_cpf_has_11_digits(self):
+		"""CPF must have 11 digits"""
+		data = dict(name='Henrique Bastos', cpf='1234',
+			        email='henrique@bastos.net', phone='21-996186180')
+		form = SubscriptionForm(data)
+		form.is_valid()
+
+		self.assertListEqual(['cpf'], list(form.errors))
+

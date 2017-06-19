@@ -6,6 +6,9 @@ def validate_cpf(value):
 	if not value.isdigit():
 		raise ValidationError('CPF deve conter apenas números.')
 
+	if len(value) != 11:
+		raise ValidationError('CPF deve ter 11 números.')
+
 
 class SubscriptionForm(forms.Form):
 	name = forms.CharField(label='Nome')
