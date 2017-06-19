@@ -3,13 +3,11 @@ from eventex.subscriptions.forms import SubscriptionForm
 
 
 class SubscriptionFormTest(TestCase):
-	def setUp(self):
-		self.form = SubscriptionForm()
-
 	def test_form_has_fields(self):
 		"""Form must have 4 fields"""
+		form = SubscriptionForm()
 		expected = ['name', 'cpf', 'email', 'phone']
-		self.assertSequenceEqual(expected, list(self.form.fields))
+		self.assertSequenceEqual(expected, list(form.fields))
 
 	def test_cpf_is_digit(self):
 		"""CPF must only accept digits."""
