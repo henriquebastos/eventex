@@ -12,12 +12,17 @@ class SubscriptionFormTest(TestCase):
 	def test_cpf_is_digit(self):
 		"""CPF must only accept digits."""
 		form = self.make_validated_form(cpf='ABCD5678901')
-		self.assertListEqual(['cpf'], list(form.errors))
+		self.assertFormErrorMessage(form, 'cpf', 'CPF deve conter apenas números.')
 
 	def test_cpf_has_11_digits(self):
 		"""CPF must have 11 digits"""
 		form = self.make_validated_form(cpf='1234')
-		self.assertListEqual(['cpf'], list(form.errors))
+		self.assertFormErrorMessage(form, 'cpf', 'CPF deve ter 11 números.')
+
+	def assertFormErrorMessage(self, form, field, msg):
+		errors = form.errors
+		errors_list = errors[field]
+		self.assertListEqual([msg], errors_list)
 
 	def make_validated_form(self, **kwargs):
 		valid = dict(name='Henrique Bastos', cpf='12345678901',
