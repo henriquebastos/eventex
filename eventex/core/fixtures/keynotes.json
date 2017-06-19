@@ -1,0 +1,24 @@
+[
+{
+    "model": "core.speaker",
+    "pk": 1,
+    "fields": {
+        "name": "Grace Hopper",
+        "slug": "grace-hopper",
+        "photo": "http://hbn.link/hopper-pic",
+        "website": "http://hbn.link/hopper-site",
+        "description": "Programadora e almirante.\nInventora do compilador, criadora da linguagem de programa\u00e7\u00e3o Flow-Matic serviu de base para a linguagem COBOL permitindo a populariza\u00e7\u00e3o de aplica\u00e7\u00f5es comerciais.\nQuer mais o que?"
+    }
+},
+{
+    "model": "core.speaker",
+    "pk": 2,
+    "fields": {
+        "name": "Alan Turing",
+        "slug": "alan-turing",
+        "photo": "http://hbn.link/turing-pic",
+        "website": "http://hbn.link/turing-site",
+        "description": "Matem\u00e1tico e decifrador de c\u00f3digos.\nInventou o computador moderno, formalizou matematicamente o que \u00e9 um algor\u00edtimo e de quebra salvou o mundo como conhecemos ao destro\u00e7ar a criptografia nazista."
+    }
+}
+]

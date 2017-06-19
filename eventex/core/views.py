@@ -2,10 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from eventex.core.models import Speaker
 
 def home(request):
-	speakers = [
-		{'name': 'Grace Hopper', 'photo': 'http://hbn.link/hopper-pic'},
-		{'name': 'Alan Turing', 'photo': 'http://hbn.link/turing-pic'},
-	]
+	speakers = Speaker.objects.all()
 	return render(request, 'index.html', {'speakers': speakers})
 
 
