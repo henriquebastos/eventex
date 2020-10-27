@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.conf import settings
 from django.core import mail
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from eventex.subscriptions.forms import SubscriptionForm
@@ -39,7 +39,10 @@ def new(request):
 
 
 def detail(request, pk):
-	subscription = Subscription.objects.get(pk=pk)
+	try:
+		subscription = Subscription.objects.get(pk=pk)
+	except Subscription.DoesNotExist:
+		raise Http404
 
 	return render(request, 'subscriptions/subscription_detail.html',
 		          {'subscription': subscription})
