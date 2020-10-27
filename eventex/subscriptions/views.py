@@ -38,13 +38,8 @@ def new(request):
 		          {'form': SubscriptionForm()})
 
 
-def detail(request):
-	subscription = Subscription(
-		name='Henrique Bastos',
-		cpf='12345678901',
-		email='henrique@bastos.net',
-		phone='21-99618-6180'
-	)
+def detail(request, pk):
+	subscription = Subscription.objects.get(pk=pk)
 
 	return render(request, 'subscriptions/subscription_detail.html',
 		          {'subscription': subscription})
