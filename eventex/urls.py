@@ -18,11 +18,12 @@ from django.urls import path
 import eventex.core.views
 
 from eventex.core.views import home
-from eventex.subscriptions.views import subscribe
+from eventex.subscriptions.views import subscribe, detail
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', eventex.core.views.home),
     path('inscricao/', eventex.subscriptions.views.subscribe),
+    path('inscricao/1/', eventex.subscriptions.views.detail),
 ]
