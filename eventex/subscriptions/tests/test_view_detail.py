@@ -4,7 +4,13 @@ from eventex.subscriptions.models import Subscription
 
 class SubscriptionDetailGet(TestCase):
 	def setUp(self):
-		self.resp = self.client.get('/inscricao/1/')
+		obj = Subscription.objects.create(
+			name='Henrique Bastos',
+			cpf='12345678901',
+			email='henrique@bastos.net',
+			phone='21-99618-6180'
+		)
+		self.resp = self.client.get('/inscricao/{}/'.format(obj.pk))
 
 	def test_get(self):
 		self.assertEqual(200, self.resp.status_code)
