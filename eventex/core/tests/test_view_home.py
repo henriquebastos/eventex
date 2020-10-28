@@ -15,4 +15,5 @@ class HomeTest(TestCase):
 		self.assertTemplateUsed(self.response, 'index.html')
 
 	def test_subscription_list(self):
-		self.assertContains(self.response, 'href="/inscricao/"')
+		expected = 'href="{}"'.format(r('subscriptions:new'))
+		self.assertContains(self.response, expected)
