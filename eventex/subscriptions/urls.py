@@ -4,6 +4,6 @@ from django.urls import path
 app_name = 'subscriptions'
 
 urlpatterns = [
-    path('inscricao/', new, name='new'),
-    path('inscricao/<int:pk>/', detail, name='detail'),
+    path('', new, name='new'),
+    path('<int:pk>/', detail, name='detail'),
 ]
