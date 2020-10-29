@@ -36,3 +36,10 @@ class SpeakerDetailGet(TestCase):
         """Speaker must be in context"""
         speaker = self.resp.context['speaker']
         self.assertIsInstance(speaker, Speaker)
+
+
+class SpeakerDetailNotFound(TestCase):
+    def test_not_found(self):
+        response = self.client.get(r('speaker_detail', slug='not-found'))
+        self.assertEqual(404, response.status_code)
+
