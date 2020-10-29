@@ -1,9 +1,10 @@
 from django.test import TestCase
+from django.shortcuts import resolve_url as r
 
 
 class SpeakerDetailGet(TestCase):
     def setUp(self):
-        self.resp = self.client.get('/palestrantes/grace-hopper')
+        self.resp = self.client.get(r('speaker_detail', slug='grace-hopper'))
 
     def test_get(self):
         """GET should return status 200"""
