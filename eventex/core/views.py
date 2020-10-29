@@ -10,12 +10,6 @@ def home(request):
 
 
 def speaker_detail(request, slug):
-	speaker = Speaker(
-		name='Grace Hopper',
-		slug='grace-hopper',
-		photo='http://hbn.link/hopper-pic',
-		website='http://hbn.link/hopper-site',
-		description='Programadora e almirante.',
-	)
+	speaker = Speaker.objects.get(slug=slug)
 	return render(request, 'core/speaker_detail.html', {'speaker': speaker})
 

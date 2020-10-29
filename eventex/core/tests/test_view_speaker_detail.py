@@ -4,6 +4,13 @@ from eventex.core.models import Speaker
 
 class SpeakerDetailGet(TestCase):
     def setUp(self):
+        Speaker.objects.create(
+            name='Grace Hopper',
+            slug='grace-hopper',
+            photo='http://hbn.link/hopper-pic',
+            website='http://hbn.link/hopper-site',
+            description='Programadora e almirante.',
+        )
         self.resp = self.client.get(r('speaker_detail', slug='grace-hopper'))
 
     def test_get(self):
