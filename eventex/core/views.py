@@ -10,4 +10,12 @@ def home(request):
 
 
 def speaker_detail(request, slug):
-    return render(request, 'core/speaker_detail.html', {'speaker': Speaker()})
+	speaker = Speaker(
+		name='Grace Hopper',
+		slug='grace-hopper',
+		photo='http://hbn.link/hopper-pic',
+		website='http://hbn.link/hopper-site',
+		description='Programadora e almirante.',
+	)
+	return render(request, 'core/speaker_detail.html', {'speaker': speaker})
+

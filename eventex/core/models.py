@@ -1,8 +1,9 @@
 from django.db import models
 
 
-class Speaker:
-    name = 'Grace Hopper'
-    website = 'http://hbn.link/hopper-site'
-    photo = 'http://hbn.link/hopper-pic'
-    description = 'Programadora e almirante.'
+class Speaker(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.SlugField()
+    photo = models.URLField()
+    website = models.URLField()
+    description = models.TextField()
