@@ -11,3 +11,15 @@ class SpeakerDetailGet(TestCase):
 
     def test_template(self):
         self.assertTemplateUsed(self.resp, 'core/speaker_detail.html')
+
+    def test_html(self):
+        contents = [
+            'Grace Hopper',
+            'Programadora e almirante.',
+            'http://hbn.link/hopper-pic',
+            'http://hbn.link/hopper-site',
+        ]
+
+        for expected in contents:
+            with self.subTest():
+                self.assertContains(self.resp, expected)
