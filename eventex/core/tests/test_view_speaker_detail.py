@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
-
+from eventex.core.models import Speaker
 
 class SpeakerDetailGet(TestCase):
     def setUp(self):
@@ -24,3 +24,8 @@ class SpeakerDetailGet(TestCase):
         for expected in contents:
             with self.subTest():
                 self.assertContains(self.resp, expected)
+
+    def test_context(self):
+        """Speaker must be in context"""
+        speaker = self.resp.context['speaker']
+        self.assertIsInstance(speaker, Speaker)
