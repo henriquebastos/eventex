@@ -22,3 +22,7 @@ class SpeakerModelTest(TestCase):
     def test_website_can_be_blank(self):
         field = Speaker._meta.get_field('website')
         self.assertTrue(field.blank)
+
+    def test_str(self):
+        self.assertEqual('Grace Hopper', str(self.speaker))
+
