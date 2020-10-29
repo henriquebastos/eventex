@@ -10,5 +10,4 @@ def home(request):
 
 
 def speaker_detail(request, slug):
-    from django.http import HttpResponse
-    return HttpResponse()
+    return render(request, 'core/speaker_detail.html')

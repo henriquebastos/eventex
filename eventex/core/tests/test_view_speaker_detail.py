@@ -8,3 +8,6 @@ class SpeakerDetailGet(TestCase):
     def test_get(self):
         """GET should return status 200"""
         self.assertEqual(200, self.resp.status_code)
+
+    def test_template(self):
+        self.assertTemplateUsed(self.resp, 'core/speaker_detail.html')
