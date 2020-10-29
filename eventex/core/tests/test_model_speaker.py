@@ -3,8 +3,8 @@ from eventex.core.models import Speaker
 
 
 class SpeakerModelTest(TestCase):
-    def test_create(self):
-        speaker = Speaker.objects.create(
+    def setUp(self):
+        self.speaker = Speaker.objects.create(
             name='Grace Hopper',
             slug='grace-hopper',
             photo='http://hbn.link/hopper-pic',
@@ -12,6 +12,7 @@ class SpeakerModelTest(TestCase):
             description='Programadora e almirante.',
         )
 
+    def test_create(self):
         self.assertTrue(Speaker.objects.exists())
 
     def test_description_can_be_blank(self):
@@ -21,4 +22,3 @@ class SpeakerModelTest(TestCase):
     def test_website_can_be_blank(self):
         field = Speaker._meta.get_field('website')
         self.assertTrue(field.blank)
-        
