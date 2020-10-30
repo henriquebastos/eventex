@@ -1,9 +1,15 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
 
+from eventex.core.models import Talk
+
 
 class TalkListGet(TestCase):
     def setUp(self):
+        Talk.objects.create(title='Título da Palestra.', start='10:00',
+                               description='Descrição da palestra.')
+        Talk.objects.create(title='Título da Palestra.', start='13:00',
+                               description='Descrição da palestra.')
         self.resp = self.client.get(r('talk_list'))
 
     def test_get(self):
