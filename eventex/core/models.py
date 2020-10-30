@@ -18,3 +18,9 @@ class Speaker(models.Model):
 
     def get_absolute_url(self):
         return r('speaker_detail', slug=self.slug)
+
+
+class Contact(models.Model):
+    speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE)
+    kind = models.CharField(max_length=1)
+    value = models.CharField(max_length=255)
