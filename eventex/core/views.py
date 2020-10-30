@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from eventex.core.models import Speaker
+from eventex.core.models import Speaker, Talk
 
 
 def home(request):
@@ -14,7 +14,9 @@ def speaker_detail(request, slug):
 
 def talk_list(request):
     context = {
-        'morning_talks': None,
-        'afternoon_talks': None,
+        'morning_talks': [Talk(title='Título da Palestra.', start='10:00',
+                               description='Descrição da palestra.')],
+        'afternoon_talks': [Talk(title='Título da Palestra.', start='13:00',
+                                 description='Descrição da palestra.')],
     }
     return render(request, 'core/talk_list.html', context=context)
