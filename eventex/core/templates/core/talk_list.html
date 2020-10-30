@@ -6,14 +6,22 @@
         <h2>Manhã</h2>
         {% for talk in morning_talks %}
         <h3>{{ talk.start }} - {{ talk.title }}</h3>
-        <h4>Por <a href="/palestrantes/henrique-bastos/">Henrique Bastos</a></h4>
+        <h4>Por
+            {% for speaker in talk.speakers.all %}
+            <a href="{{ speaker.get_absolute_url }}">{{ speaker.name }}</a>
+            {% endfor %}
+        </h4>
         <p>{{ talk.description }}</p>
         {% endfor %}
 
         <h2>Tarde</h2>
         {% for talk in afternoon_talks %}
         <h3>{{ talk.start }} - {{ talk.title }}</h3>
-        <h4>Por <a href="/palestrantes/henrique-bastos/">Henrique Bastos</a></h4>
+        <h4>Por
+            {% for speaker in talk.speakers.all %}
+            <a href="{{ speaker.get_absolute_url }}">{{ speaker.name }}</a>
+            {% endfor %}
+        </h4>
         <p>{{ talk.description }}</p>
         {% endfor %}
     </div>
