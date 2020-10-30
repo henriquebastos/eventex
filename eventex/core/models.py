@@ -25,6 +25,10 @@ class Contact(models.Model):
         ('E', 'Email'),
         ('P', 'Telefone'),
     )
-    speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE)
-    kind = models.CharField(max_length=1, choices=KINDS)
-    value = models.CharField(max_length=255)
+    speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE, verbose_name='palestrante')
+    kind = models.CharField('tipo', max_length=1, choices=KINDS)
+    value = models.CharField('valor', max_length=255)
+
+    class Meta:
+        verbose_name = 'contato'
+        verbose_name_plural = 'contatos'
