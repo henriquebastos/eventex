@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 from eventex.core.models import Speaker, Contact
 
@@ -27,3 +28,12 @@ class ContactModelTest(TestCase):
         )
 
         self.assertTrue(Contact.objects.exists())
+
+    def test_choice(self):
+        contact = Contact.objects.create(
+            speaker=self.speaker,
+            kind='A',
+            value='B'
+        )
+
+        self.assertRaises(ValidationError, contact.full_clean)

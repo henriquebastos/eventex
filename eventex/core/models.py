@@ -21,6 +21,10 @@ class Speaker(models.Model):
 
 
 class Contact(models.Model):
+    KINDS =(
+        ('E', 'Email'),
+        ('P', 'Telefone'),
+    )
     speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE)
-    kind = models.CharField(max_length=1)
+    kind = models.CharField(max_length=1, choices=KINDS)
     value = models.CharField(max_length=255)
