@@ -13,4 +13,8 @@ def speaker_detail(request, slug):
 
 
 def talk_list(request):
-    return render(request, 'core/talk_list.html')
+    context = {
+        'morning_talks': None,
+        'afternoon_talks': None,
+    }
+    return render(request, 'core/talk_list.html', context=context)
