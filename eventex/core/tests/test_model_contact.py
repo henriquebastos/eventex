@@ -3,15 +3,15 @@ from eventex.core.models import Speaker, Contact
 
 
 class ContactModelTest(TestCase):
-    def test_create(self):
-        speaker = Speaker.objects.create(
+    def setUp(self):
+        self.speaker = Speaker.objects.create(
             name='Henrique Bastos',
             slug='henrique-bastos',
             photo='https://hbn.link/hb-pic'
         )
 
         contact = Contact.objects.create(
-            speaker=speaker,
+            speaker=self.speaker,
             kind='E',
             value='henrique@bastos.net'
         )
