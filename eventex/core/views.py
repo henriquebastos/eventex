@@ -13,5 +13,4 @@ def speaker_detail(request, slug):
 
 
 def talk_list(request):
-    from django.http import HttpResponse
-    return HttpResponse()
+    return render(request, 'core/talk_list.html')
