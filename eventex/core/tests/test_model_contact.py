@@ -10,6 +10,7 @@ class ContactModelTest(TestCase):
             photo='https://hbn.link/hb-pic'
         )
 
+    def test_email(self):
         contact = Contact.objects.create(
             speaker=self.speaker,
             kind='E',
