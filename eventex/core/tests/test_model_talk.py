@@ -25,3 +25,7 @@ class TalkModelTest(TestCase):
     def test_description_blank(self):
         field = Talk._meta.get_field('description')
         self.assertTrue(field.blank)
+
+    def test_speakers_blank(self):
+        field = Talk._meta.get_field('speakers')
+        self.assertTrue(field.blank)
