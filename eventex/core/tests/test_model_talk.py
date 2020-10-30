@@ -35,3 +35,6 @@ class TalkModelTest(TestCase):
     def test_start_null(self):
         field = Talk._meta.get_field('start')
         self.assertTrue(field.null)
+
+    def test_str(self):
+        self.assertEqual('Título da Palestra', str(self.talk))
