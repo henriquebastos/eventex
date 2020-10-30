@@ -21,3 +21,7 @@ class TalkModelTest(TestCase):
             website='http://henriquebastos.net'
         )
         self.assertEqual(1, self.talk.speakers.count())
+
+    def test_description_blank(self):
+        field = Talk._meta.get_field('description')
+        self.assertTrue(field.blank)
