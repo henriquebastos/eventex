@@ -12,6 +12,8 @@
             {% endfor %}
         </h4>
         <p>{{ talk.description }}</p>
+        {% empty %}
+        <p>Ainda não existem palestras de manhã.</p>
         {% endfor %}
 
         <h2>Tarde</h2>
@@ -23,6 +25,8 @@
             {% endfor %}
         </h4>
         <p>{{ talk.description }}</p>
+        {% empty %}
+        <p>Ainda não existem palestras de tarde.</p>
         {% endfor %}
     </div>
 </section>
