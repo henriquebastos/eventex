@@ -23,5 +23,5 @@ urlpatterns = [
     path('', home, name='home'),
     path('inscricao/', include('eventex.subscriptions.urls')),
     path('palestrantes/<slug:slug>', speaker_detail, name='speaker_detail'),
-    path('palestras/', talk_list)
+    path('palestras/', talk_list, name='talk_list')
 ]
