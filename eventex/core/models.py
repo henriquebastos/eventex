@@ -21,10 +21,14 @@ class Speaker(models.Model):
 
 
 class Contact(models.Model):
+    EMAIL = 'E'
+    PHONE = 'P'
+
     KINDS =(
-        ('E', 'Email'),
-        ('P', 'Telefone'),
+        (EMAIL, 'Email'),
+        (PHONE, 'Telefone'),
     )
+
     speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE, verbose_name='palestrante')
     kind = models.CharField('tipo', max_length=1, choices=KINDS)
     value = models.CharField('valor', max_length=255)
