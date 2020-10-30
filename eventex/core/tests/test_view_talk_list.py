@@ -9,3 +9,5 @@ class TalkListGet(TestCase):
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
 
+    def test_tempate(self):
+        self.assertTemplateUsed(self.resp, 'core/talk_list.html')
