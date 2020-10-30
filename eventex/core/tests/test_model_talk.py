@@ -12,3 +12,12 @@ class TalkModelTest(TestCase):
 
     def test_create(self):
         self.assertTrue(Talk.objects.exists())
+
+    def test_has_speakers(self):
+        """Talk has many Speakers and vice-versa"""
+        self.talk.speakers.create(
+            name='Henrique Bastos',
+            slug='henrique-bastos',
+            website='http://henriquebastos.net'
+        )
+        self.assertEqual(1, self.talk.speakers.count())
