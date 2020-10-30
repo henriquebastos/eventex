@@ -18,3 +18,12 @@ class ContactModelTest(TestCase):
         )
 
         self.assertTrue(Contact.objects.exists())
+
+    def test_phone(self):
+        contact = Contact.objects.create(
+            speaker=self.speaker,
+            kind='P',
+            value='21-996186180'
+        )
+
+        self.assertTrue(Contact.objects.exists())
