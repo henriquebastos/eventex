@@ -6,6 +6,7 @@ from eventex.core.models import Speaker, Contact
 
 class ContactInLine(admin.TabularInline):
     model = Contact
+    extra = 1
 
 
 class SpeakerModelAdmin(admin.ModelAdmin):
@@ -22,5 +23,6 @@ class SpeakerModelAdmin(admin.ModelAdmin):
         return format_html('<img width="32px" src="{}"/>', obj.photo)
 
     photo_img.short_description = 'foto'
+
 
 admin.site.register(Speaker, SpeakerModelAdmin)
