@@ -81,3 +81,6 @@ class CourseModelTest(TestCase):
             website='http://henriquebastos.net'
         )
         self.assertEqual(1, self.course.speakers.count())
+
+    def test_str(self):
+        self.assertEqual('Título do Curso', str(self.course))
