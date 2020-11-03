@@ -84,3 +84,6 @@ class CourseModelTest(TestCase):
 
     def test_str(self):
         self.assertEqual('Título do Curso', str(self.course))
+
+    def test_manager(self):
+        self.assertIsInstance(Course.objects, PeriodManager)
