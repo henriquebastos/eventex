@@ -57,8 +57,14 @@ class ContactManagerTest(TestCase):
         )
 
         s.contact_set.create(kind=Contact.EMAIL, value='henrique@bastos.net')
+        s.contact_set.create(kind=Contact.PHONE, value='21-996186180')
 
     def test_emails(self):
         qs = Contact.emails.all()
         expected = ['henrique@bastos.net']
+        self.assertQuerysetEqual(qs, expected, lambda o: o.value)
+
+    def test_phones(self):
+        qs = Contact.phones.all()
+        expected = ['21-996186180']
         self.assertQuerysetEqual(qs, expected, lambda o: o.value)
