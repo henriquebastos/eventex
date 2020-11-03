@@ -72,3 +72,12 @@ class CourseModelTest(TestCase):
 
     def test_create(self):
         self.assertTrue(Course.objects.exists())
+
+    def test_speaker(self):
+        """Course has many speakers and vice-versa"""
+        self.course.speakers.create(
+            name='Henrique Bastos',
+            slug='henrique-bastos',
+            website='http://henriquebastos.net'
+        )
+        self.assertEqual(1, self.course.speakers.count())

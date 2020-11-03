@@ -66,3 +66,4 @@ class Course(models.Model):
     start = models.TimeField()
     description = models.TextField()
     slots = models.IntegerField()
+    speakers = models.ManyToManyField('Speaker')
