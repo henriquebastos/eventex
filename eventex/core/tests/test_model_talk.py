@@ -49,3 +49,8 @@ class PeriodManagerTest(TestCase):
 
     def test_manager(self):
         self.assertIsInstance(Talk.objects, PeriodManager)
+
+    def test_at_morning(self):
+        qs = Talk.objects.at_morning()
+        expected = ['Morning Talk']
+        self.assertQuerysetEqual(qs, expected, lambda o: o.title)

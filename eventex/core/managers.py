@@ -10,4 +10,5 @@ class KindQuerySet(models.QuerySet):
 
 
 class PeriodManager(models.Manager):
-    pass
+    def at_morning(self):
+        return self.filter(start__lt='12:00')
