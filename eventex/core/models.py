@@ -74,9 +74,9 @@ class CourseOld(Activity):
         verbose_name_plural = 'cursos'
 
 
-# class Course(Talk):
-#     slots = models.IntegerField()
-#
-#     class Meta:
-#         verbose_name = 'curso'
-#         verbose_name_plural = 'cursos'
+class Course(Talk):
+    slots = models.IntegerField()
+
+    class Meta:
+        verbose_name = 'curso'
+        verbose_name_plural = 'cursos'
