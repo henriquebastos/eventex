@@ -1,7 +1,7 @@
 from django.db import models
 from django.shortcuts import resolve_url as r
 
-from eventex.core.managers import EmailContactManager
+from eventex.core.managers import EmailContactManager, PhoneContactManager
 
 
 class Speaker(models.Model):
@@ -37,6 +37,7 @@ class Contact(models.Model):
 
     objects = models.Manager()
     emails = EmailContactManager()
+    phones = PhoneContactManager()
 
     class Meta:
         verbose_name = 'contato'
