@@ -14,7 +14,7 @@ def speaker_detail(request, slug):
 
 def talk_list(request):
     context = {
-        'morning_talks': Talk.objects.filter(start__lt='12:00'),
-        'afternoon_talks': Talk.objects.filter(start__gte='12:00'),
+        'morning_talks': Talk.objects.at_morning(),
+        'afternoon_talks': Talk.objects.at_afternoon(),
     }
     return render(request, 'core/talk_list.html', context=context)
