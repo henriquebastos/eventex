@@ -68,5 +68,7 @@ class Course(models.Model):
     slots = models.IntegerField()
     speakers = models.ManyToManyField('Speaker')
 
+    objects = PeriodManager()
+
     def __str__(self):
         return self.title
