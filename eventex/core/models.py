@@ -55,6 +55,7 @@ class Activity(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['start']
         verbose_name = 'palestra'
         verbose_name_plural = 'palestras'
 
