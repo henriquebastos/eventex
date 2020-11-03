@@ -67,3 +67,6 @@ class Course(models.Model):
     description = models.TextField()
     slots = models.IntegerField()
     speakers = models.ManyToManyField('Speaker')
+
+    def __str__(self):
+        return self.title
