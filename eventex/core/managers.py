@@ -7,3 +7,7 @@ class KindQuerySet(models.QuerySet):
 
     def phones(self):
         return self.filter(kind=self.model.PHONE)
+
+
+class PeriodManager(models.Manager):
+    pass
