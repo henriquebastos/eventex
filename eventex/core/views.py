@@ -5,9 +5,15 @@ from eventex.core.models import Speaker, Talk, Course
 
 
 class HomeView(View):
+    template_name = 'index.html'
+
     def get(self, *args, **kwargs):
         speakers = Speaker.objects.all()
-        return render(self.request, 'index.html', {'speakers': speakers})
+        return self.render_to_response({'speakers': speakers})
+
+    def render_to_response(self, context):
+        return render(self.request, self.template_name, context)
+
 
 def home(request):
     speakers = Speaker.objects.all()
