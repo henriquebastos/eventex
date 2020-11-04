@@ -6,12 +6,13 @@ from django.shortcuts import render, resolve_url as r
 from django.template.loader import render_to_string
 from django.views import View
 from django.views.generic import DetailView
+from django.views.generic.base import TemplateResponseMixin
 
 from eventex.subscriptions.forms import SubscriptionForm
 from eventex.subscriptions.models import Subscription
 
 
-class SubscriptionCreate(View):
+class SubscriptionCreate(TemplateResponseMixin, View):
     template_name = 'subscriptions/subscription_form.html'
     form_class = SubscriptionForm
 
@@ -33,9 +34,6 @@ class SubscriptionCreate(View):
                    {'subscription': subscription})
 
         return HttpResponseRedirect(r('subscriptions:detail', subscription.pk))
-
-    def render_to_response(self, context):
-        return render(self.request, self.template_name, context)
 
     def get_form(self):
         if self.request.method == 'POST':
