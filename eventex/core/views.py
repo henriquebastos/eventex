@@ -6,6 +6,8 @@ from eventex.core.models import Speaker, Talk, Course
 
 class HomeView(View):
     template_name = 'index.html'
+    object_list = Speaker.objects.all()
+    context_object_name = 'speakers'
 
     def get(self, *args, **kwargs):
         context = self.get_context_data()
@@ -15,8 +17,7 @@ class HomeView(View):
         return render(self.request, self.template_name, context)
 
     def get_context_data(self, **kwargs):
-        speakers = Speaker.objects.all()
-        context = {'speakers': speakers}
+        context = {self.context_object_name: self.object_list}
         context.update(kwargs)
         return context
 
