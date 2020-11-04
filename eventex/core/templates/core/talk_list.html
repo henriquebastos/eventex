@@ -4,14 +4,14 @@
 <section>
     <div class="talks content row padding-bottom-3 desktop-12 container">
         <h2>Manhã</h2>
-        {% for talk in morning_talks %}
+        {% for talk in talk_list.at_morning %}
         {% include 'core/talk_list_snippet.html' with talk=talk only %}
         {% empty %}
         <p>Ainda não existem palestras de manhã.</p>
         {% endfor %}
 
         <h2>Tarde</h2>
-        {% for talk in afternoon_talks %}
+        {% for talk in talk_list.at_afternoon %}
         {% include 'core/talk_list_snippet.html' with talk=talk only %}
         {% empty %}
         <p>Ainda não existem palestras de tarde.</p>
