@@ -12,16 +12,16 @@ from eventex.subscriptions.models import Subscription
 
 
 class SubscriptionCreate(View):
+    template_name = 'subscriptions/subscription_form.html'
+
     def get(self, *args, **kwargs):
-        return render(self.request, 'subscriptions/subscription_form.html',
-                      {'form': SubscriptionForm()})
+        return self.render_to_response({'form': SubscriptionForm()})
 
     def post(self, *args, **kwargs):
         form = SubscriptionForm(self.request.POST)
 
         if not form.is_valid():
-            return render(self.request, 'subscriptions/subscription_form.html',
-                          {'form': form})
+            return self.render_to_response({'form': form})
 
         subscription = form.save()
 
@@ -33,6 +33,8 @@ class SubscriptionCreate(View):
 
         return HttpResponseRedirect(r('subscriptions:detail', subscription.pk))
 
+    def render_to_response(self, context):
+        return render(self.request, self.template_name, context)
 
 new = SubscriptionCreate.as_view()
 
