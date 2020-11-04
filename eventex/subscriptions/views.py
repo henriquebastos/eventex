@@ -17,13 +17,13 @@ class SubscriptionCreate(TemplateResponseMixin, View):
     form_class = SubscriptionForm
 
     def get(self, *args, **kwargs):
-        return self.render_to_response({'form': self.get_form()})
+        return self.render_to_response(self.get_context_data())
 
     def post(self, *args, **kwargs):
         form = self.get_form()
 
         if not form.is_valid():
-            return self.render_to_response({'form': form})
+            return self.render_to_response(self.get_context_data(form=form))
 
         subscription = form.save()
 
@@ -40,6 +40,10 @@ class SubscriptionCreate(TemplateResponseMixin, View):
             return self.form_class(self.request.POST)
         return self.form_class()
 
+    def get_context_data(self, **kwargs):
+        context = dict(kwargs)
+        context.setdefault('form', self.get_form())
+        return context
 
 new = SubscriptionCreate.as_view()
 
