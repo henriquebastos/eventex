@@ -1,20 +1,16 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic.base import View
+from django.views.generic.base import View, TemplateResponseMixin
 
 from eventex.core.models import Speaker, Talk, Course
 
 
-class GenericHomeView(View):
-    template_name = None
+class GenericHomeView(TemplateResponseMixin, View):
     object_list = None
     context_object_name = None
 
     def get(self, *args, **kwargs):
         context = self.get_context_data()
         return self.render_to_response(context)
-
-    def render_to_response(self, context):
-        return render(self.request, self.template_name, context)
 
     def get_context_data(self, **kwargs):
         context = {self.context_object_name: self.object_list}
