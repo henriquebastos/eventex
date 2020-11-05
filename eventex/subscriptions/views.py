@@ -8,19 +8,12 @@ from eventex.subscriptions.forms import SubscriptionForm
 from eventex.subscriptions.models import Subscription
 
 
-class SubscriptionCreate(CreateView):
-    model = Subscription
-    form_class = SubscriptionForm
+class EmailCreateMixin:
     email_to = None
     email_context_name = None
     email_template_name = None
     email_from = settings.DEFAULT_FROM_EMAIL
-    email_subject = 'Confirmação de inscrição'
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        self.send_mail()
-        return response
+    email_subject = ''
 
     def send_mail(self):
         subject = self.email_subject
@@ -53,6 +46,17 @@ class SubscriptionCreate(CreateView):
         context = dict(kwargs)
         context.setdefault(self.get_email_context_name(), self.object)
         return context
+
+
+class SubscriptionCreate(EmailCreateMixin, CreateView):
+    model = Subscription
+    form_class = SubscriptionForm
+    email_subject = 'Confirmação de inscrição'
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.send_mail()
+        return response
 
 
 new = SubscriptionCreate.as_view()
