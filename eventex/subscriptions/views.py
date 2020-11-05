@@ -48,17 +48,15 @@ class EmailCreateMixin:
         return context
 
 
-class SubscriptionCreate(EmailCreateMixin, CreateView):
-    model = Subscription
-    form_class = SubscriptionForm
-    email_subject = 'Confirmação de inscrição'
-
+class EmailCreateView(EmailCreateMixin, CreateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         self.send_mail()
         return response
 
 
-new = SubscriptionCreate.as_view()
+new = EmailCreateView.as_view(model=Subscription,
+                              form_class=SubscriptionForm,
+                              email_subject='Confirmação de inscrição')
 
 detail = DetailView.as_view(model=Subscription)
