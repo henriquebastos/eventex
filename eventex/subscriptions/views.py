@@ -14,6 +14,8 @@ class SubscriptionCreate(CreateView):
     email_to = None
     email_context_name = None
     email_template_name = None
+    email_from = settings.DEFAULT_FROM_EMAIL
+    email_subject = 'Confirmação de inscrição'
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -21,8 +23,8 @@ class SubscriptionCreate(CreateView):
         return response
 
     def send_mail(self):
-        subject = 'Confirmação de inscrição'
-        from_ = settings.DEFAULT_FROM_EMAIL
+        subject = self.email_subject
+        from_ = self.email_from
         to = self.get_email_to()
         template_name = self.get_email_template_name()
         context = self.get_email_context_data()
@@ -36,7 +38,7 @@ class SubscriptionCreate(CreateView):
 
         meta = self.object._meta
         return '{}/{}_email.txt'.format(meta.app_label, meta.model_name)
-    
+
     def get_email_to(self):
         if self.email_to:
             return self.email_to
