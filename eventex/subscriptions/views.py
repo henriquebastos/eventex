@@ -1,17 +1,15 @@
 from django.conf import settings
 from django.core import mail
-from django.http import HttpResponseRedirect
 from django.template.loader import render_to_string
 from django.views.generic import DetailView
-from django.views.generic.base import TemplateResponseMixin
-from django.views.generic.edit import BaseCreateView
+from django.views.generic.edit import CreateView
 
 from eventex.subscriptions.forms import SubscriptionForm
 from eventex.subscriptions.models import Subscription
 
 
-class SubscriptionCreate(TemplateResponseMixin, BaseCreateView):
-    template_name = 'subscriptions/subscription_form.html'
+class SubscriptionCreate(CreateView):
+    model = Subscription
     form_class = SubscriptionForm
 
     def form_valid(self, form):
