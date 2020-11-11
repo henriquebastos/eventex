@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from eventex.core.models import Speaker, Talk, Course
+from eventex.core.models import Speaker, Talk, CourseOld
 
 
 def home(request):
@@ -13,10 +13,10 @@ def speaker_detail(request, slug):
 
 
 def talk_list(request):
-    at_morning = list(Talk.objects.at_morning()) + list(Course.objects.at_morning())
+    at_morning = list(Talk.objects.at_morning()) + list(CourseOld.objects.at_morning())
     at_morning.sort(key=lambda o: o.start)
 
-    at_afternoon = list(Talk.objects.at_afternoon()) + list(Course.objects.at_afternoon())
+    at_afternoon = list(Talk.objects.at_afternoon()) + list(CourseOld.objects.at_afternoon())
     at_afternoon.sort(key=lambda o: o.start)
     context = {
         'morning_talks': at_morning,
