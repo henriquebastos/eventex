@@ -26,17 +26,13 @@ class EmailCreateMixin:
             return self.get_email_template_name()
 
         meta = self.object._meta
-        return '{}/{}_email.txt'.format(meta.app_label, meta.model_name)
+        return f'{meta.app_label}/{meta.model_name}_email.txt'
 
     def get_email_to(self):
-        if self.email_to:
-            return self.email_to
-        return self.object.email
+        return self.email_to or self.object.email
 
     def get_email_context_name(self):
-        if self.email_context_name:
-            return self.email_context_name
-        return self.object._meta.model_name
+        return self.email_context_name or self.object._meta.model_name
 
     def get_email_context_data(self, **kwargs):
         context = dict(kwargs)
